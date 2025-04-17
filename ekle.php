@@ -1,6 +1,7 @@
 <?php
 include 'veritabani.php';
 
+// kaydet ürün
 if ($_POST["islem"] == "ekle") {
     $ad = $_POST["ad"];
     $aciklama = $_POST["aciklama"];
@@ -8,6 +9,7 @@ if ($_POST["islem"] == "ekle") {
     $baglanti->query("INSERT INTO urunler (ad, aciklama, birim) VALUES ('$ad', '$aciklama', '$birim')");
 }
 
+// Ürünleri yükle
 if ($_POST["islem"] == "listele") {
     $arama = trim($_POST["arama"]);
     $sorgu = "SELECT * FROM urunler";

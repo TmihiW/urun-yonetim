@@ -6,6 +6,7 @@ $miktar = floatval($_POST["miktar"]);
 $islem_turu = $_POST["islem_turu"];
 
 $urun = $baglanti->query("SELECT kalan_stok FROM urunler WHERE id = $urun_id")->fetch_assoc();
+// if else
 $yeni_stok = $islem_turu == "giris" ? $urun["kalan_stok"] + $miktar : $urun["kalan_stok"] - $miktar;
 
 if ($yeni_stok < 0) $yeni_stok = 0;

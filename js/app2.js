@@ -12,11 +12,11 @@ $(document).ready(function () {
             }
         });
     }
-
+    // Arama kutusu
     $("#arama").on("input", function () {
         urunleriYukle($(this).val());
     });
-
+    // Ürün ekle
     $("#kaydetUrun").click(function () {
         const ad = $("#urunAdi").val().trim();
         const aciklama = $("#urunAciklama").val().trim();
@@ -44,7 +44,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    // Stok giriş çıkış
     $("#kaydetStok").click(function () {
         const urun_id = $("#stokUrun").val();
         const miktar = parseFloat($("#stokMiktar").val());
@@ -70,7 +70,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    //Stok giriş/çıkış modal için ürünleri yükle (urunleriYukle);
     function stokUrunleriDoldur() {
         $.ajax({
             url: "ekle.php",
