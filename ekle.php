@@ -14,7 +14,7 @@ if ($_POST["islem"] == "listele") {
     $arama = trim($_POST["arama"]);
     $sorgu = "SELECT * FROM urunler";
 
-    if (!empty($arama)) {
+    if (isset($arama) && trim($arama) !== "") {
         $arrayData = explode(" ", $arama);
         $sorgu .= " WHERE ";
 
