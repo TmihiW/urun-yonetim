@@ -8,6 +8,7 @@
         <option value="cikis">Çıkış</option>
       </select>
       <input type="number" class="form-control mb-2" id="stokMiktar" placeholder="Miktar">
+      <input type="text" class="form-control mb-2" id="stokAciklama" placeholder="Açıklama">
       <button class="btn btn-primary" id="kaydetStok">Kaydet</button>
     </div>
   </div>
