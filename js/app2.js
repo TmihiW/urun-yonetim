@@ -1,17 +1,30 @@
-$(document).ready(function () {
-    urunleriYukle();
+function urunleriYukle(query = "") {
+    $.ajax({
+        url: "ekle.php",
+        method: "POST",
+        data: { islem: "listele", arama: query },
+        success: function (veri) {
+            $("#urunListesi").html(veri);
+            stokUrunleriDoldur();
+        }
+    });
+}
 
-    function urunleriYukle(query = "") {
-        $.ajax({
-            url: "ekle.php",
-            method: "POST",
-            data: { islem: "listele", arama: query },
-            success: function (veri) {
-                $("#urunListesi").html(veri);
-                stokUrunleriDoldur();
-            }
-        });
+$(document).ready(function () {
+    // Navbar tıklamaları
+    $("#navUrunler").click(function (e) {
+        e.preventDefault();
+        sayfaYukle('urun_listele.php');
+    });
+
+    $("#navStok").click(function (e) {
+        sayfaYukle('stok_hareketleri.php');
+    });
+    function sayfaYukle(sayfa) {
+        $("#icerik").load(sayfa);
     }
+
+    
     // Arama kutusu
     $("#arama").on("input", function () {
         urunleriYukle($(this).val());
