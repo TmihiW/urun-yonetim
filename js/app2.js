@@ -9,6 +9,15 @@ function urunleriYukle(query = "") {
         }
     });
 }
+function stoklariYukle() {
+    $.ajax({
+        url: "stok_listele.php",
+        method: "POST",
+        success: function (veri) {
+            $("#stokHareketleriListesi").html(veri);
+        }
+    });
+}
 
 $(document).ready(function () {
     // Navbar tıklamaları
