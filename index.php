@@ -12,7 +12,10 @@
     <div class="container" style="margin-top: 80px;">
         <div id="icerik"></div>
     </div>
+<<<<<<< HEAD
     <!--
+=======
+>>>>>>> d45476fce9b8beebf2ee6e8c0e65845dfa24cf36
     <div class="container">
         <h2>Ürün Listesi</h2>
         <div class="mb-3 d-flex justify-content-between">
