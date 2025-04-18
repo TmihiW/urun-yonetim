@@ -132,7 +132,7 @@ if ($_POST["islem"] == "listele") {
 
         // Ad ve stok koşullarını birleştiriyoruz
         if (!empty($filtreler)) {
-            $aramaKosullari[] = "(" . implode(" OR ", $filtreler) . ")";
+            $aramaKosullari[] = "(" . implode(" and ", $filtreler) . ")";
         }
 
         // Eğer arama koşulları varsa, WHERE kısmını oluşturuyoruz
