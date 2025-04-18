@@ -14,4 +14,13 @@ if ($yeni_stok < 0) $yeni_stok = 0;
 
 $baglanti->query("UPDATE urunler SET kalan_stok = $yeni_stok WHERE id = $urun_id");
 $baglanti->query("INSERT INTO stok_hareketleri set urun_id='$urun_id', miktar='$miktar', islem_turu='$islem_turu', stokAciklama='$stokAciklama'");
+
+if ($_POST['islem'] === 'sil' && isset($_POST['id'])) {
+    $id = intval($_POST['id']);
+    $baglanti->query("DELETE FROM stok_hareketleri WHERE id = $id");
+    echo "ok";
+    exit;
+}
+
+
 ?>
