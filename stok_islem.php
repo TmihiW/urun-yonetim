@@ -13,5 +13,5 @@ $yeni_stok = $islem_turu == "giris" ? $urun["kalan_stok"] + $miktar : $urun["kal
 if ($yeni_stok < 0) $yeni_stok = 0;
 
 $baglanti->query("UPDATE urunler SET kalan_stok = $yeni_stok WHERE id = $urun_id");
-$baglanti->query("INSERT INTO stok_hareketleri set urun_id='$urun_id', miktar='$miktar', islem_turu='$islem_turu', stokAciklama='$stokAciklama')");
+$baglanti->query("INSERT INTO stok_hareketleri set urun_id='$urun_id', miktar='$miktar', islem_turu='$islem_turu', stokAciklama='$stokAciklama'");
 ?>
