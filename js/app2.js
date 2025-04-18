@@ -49,6 +49,7 @@ $(document).ready(function () {
         const urun_id = $("#stokUrun").val();
         const miktar = parseFloat($("#stokMiktar").val());
         const islem_turu = $("#stokIslem").val();
+        const stokAciklama = $("#stokAciklama").val();
 
         if (!urun_id || isNaN(miktar) || miktar <= 0) {
             alert("Geçerli miktar giriniz.");
@@ -61,7 +62,8 @@ $(document).ready(function () {
             data: {
                 urun_id: urun_id,
                 miktar: miktar,
-                islem_turu: islem_turu
+                islem_turu: islem_turu,
+                stokAciklama: stokAciklama
             },
             success: function () {
                 $("#stokModal").modal("hide");
