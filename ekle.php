@@ -1,6 +1,10 @@
 <?php
 include 'veritabani.php';
 
+if (!isset($_POST["islem"])) {
+    echo "HATA: islem tanımsız";
+    exit;
+}
 // kaydet ürün
 if ($_POST["islem"] == "ekle") {
     $ad = $_POST["ad"];
@@ -17,7 +21,10 @@ if ($_POST["islem"] == "ekle") {
         exit;
     }
     $baglanti->query("INSERT INTO urunler (ad, aciklama, birim) VALUES ('$ad', '$aciklama', '$birim')");
+    echo "ok";
+    exit;
 }
+file_put_contents('log.txt', print_r($_POST, true));
 
 
 // Ürünleri yükle türkçe karakter tanıma ve foreach parçalı arama
