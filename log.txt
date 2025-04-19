@@ -1,0 +1,5 @@
+Array
+(
+    [islem] => listele
+    [arama] => 
+)

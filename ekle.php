@@ -1,13 +1,26 @@
 <?php
 include 'veritabani.php';
 
+if (!isset($_POST["islem"])) {
+    echo "HATA: islem tanımsız";
+    exit;
+}
 // kaydet ürün
 if ($_POST["islem"] == "ekle") {
     $ad = $_POST["ad"];
     $aciklama = $_POST["aciklama"];
     $birim = $_POST["birim"];
+    
+    if(empty($ad) || empty($aciklama) || empty($birim)) {
+        echo "Lütfen tüm alanları doldurunuz.";
+        exit;
+    }
+    
     $baglanti->query("INSERT INTO urunler (ad, aciklama, birim) VALUES ('$ad', '$aciklama', '$birim')");
+    echo "ok";
+    exit;
 }
+file_put_contents('log.txt', print_r($_POST, true));
 
 
 // Ürünleri yükle türkçe karakter tanıma ve foreach parçalı arama
@@ -132,7 +145,7 @@ if ($_POST["islem"] == "listele") {
 
         // Ad ve stok koşullarını birleştiriyoruz
         if (!empty($filtreler)) {
-            $aramaKosullari[] = "(" . implode(" OR ", $filtreler) . ")";
+            $aramaKosullari[] = "(" . implode(" and ", $filtreler) . ")";
         }
 
         // Eğer arama koşulları varsa, WHERE kısmını oluşturuyoruz
