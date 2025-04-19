@@ -8,7 +8,7 @@ function urunleriYukle(query = "") {
             stokUrunleriDoldur();
         }
     });
-}
+};
 function stoklariYukle() {
     $.ajax({
         url: "stok_listele.php",
@@ -17,7 +17,40 @@ function stoklariYukle() {
             $("#stokHareketleriListesi").html(veri);
         }
     });
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function () {
+    // Navbar tıklamaları
+    $("#navUrunler").click(function (e) {
+        e.preventDefault();
+        sayfaYukle('urun_listele.php');
+    });
+
+    $("#navStok").click(function (e) {
+        sayfaYukle('stok_hareketleri.php');
+    });
+    function sayfaYukle(sayfa) {
+        $("#icerik").load(sayfa);
+    }
+
+    
+    // Arama kutusu
+    $("#arama").on("input", function () {
+        urunleriYukle($(this).val());
+    });
+    
 // Ürün ekle
 $("#kaydetUrun").click(function () {
     const ad = $("#urunAdi").val().trim();
@@ -39,10 +72,15 @@ $("#kaydetUrun").click(function () {
             birim: birim
         },
         success: function (sonuc) {
-            $("#urunEkleModal").modal("hide");
-            urunleriYukle();
-            $("#urunAdi, #urunAciklama").val("");
-            $("#urunBirim").val("");
+            if (sonuc.trim() === "ok") {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('urunEkleModal'));
+                modal.hide();
+                urunleriYukle();
+                $("#urunAdi, #urunAciklama").val("");
+                $("#urunBirim").val("");
+            } else {
+                alert(sonuc);
+            }
         }
     });
 });
@@ -84,7 +122,7 @@ function stokUrunleriDoldur() {
             $("#stokUrun").html(veri);
         }
     });
-}
+};
 
 $(document).on("click", ".stokSil", function () {
     const id = $(this).data("id");
@@ -110,29 +148,4 @@ $(document).on("click", ".stokSil", function () {
 
 
 
-
-
-
-
-
-$(document).ready(function () {
-    // Navbar tıklamaları
-    $("#navUrunler").click(function (e) {
-        e.preventDefault();
-        sayfaYukle('urun_listele.php');
-    });
-
-    $("#navStok").click(function (e) {
-        sayfaYukle('stok_hareketleri.php');
-    });
-    function sayfaYukle(sayfa) {
-        $("#icerik").load(sayfa);
-    }
-
-    
-    // Arama kutusu
-    $("#arama").on("input", function () {
-        urunleriYukle($(this).val());
-    });
-    
 });

@@ -1,4 +1,5 @@
 Array
 (
-    [islem] => urunSecimi
+    [islem] => listele
+    [arama] => 
 )

@@ -10,16 +10,12 @@ if ($_POST["islem"] == "ekle") {
     $ad = $_POST["ad"];
     $aciklama = $_POST["aciklama"];
     $birim = $_POST["birim"];
-    if(empty($birim)) {
-        //echo "Lütfen miktarı giriniz.";
-        exit;
-    }elseif(!is_numeric($birim)){
-        //echo "Lütfen miktarı rakam olarak giriniz.";
-        exit;
-    }elseif($birim<=0){
-        //echo "Lütfen miktarı 0'dan büyük giriniz.";
+    
+    if(empty($ad) || empty($aciklama) || empty($birim)) {
+        echo "Lütfen tüm alanları doldurunuz.";
         exit;
     }
+    
     $baglanti->query("INSERT INTO urunler (ad, aciklama, birim) VALUES ('$ad', '$aciklama', '$birim')");
     echo "ok";
     exit;
